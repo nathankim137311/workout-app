@@ -1,0 +1,41 @@
+/* Below is an example of how to add a private variable within a class you cannot
+access the private variable and must use getter / setter methods in order to get 
+and set the variable value. 
+*/
+
+// method 1 - Private by convention 
+class Bottle {
+    constructor() {
+        this._water = 50 // prepend with '_' to denote that the variable is private
+    }
+
+    // must use getters / setters for private variables
+    getWater() {
+        return this._water
+    }
+
+    setWater(value) {
+        this._water = value
+    }
+}
+
+/* You can still modify _water, the underscore doesn't change or modify the variabe in any way. the underscore is just used to indicate that this particular variable is private. */ 
+
+// method 2 - Real Private Members
+class Car {
+    #fuel = 50 // prepend with '#' to make variable private
+
+    getFuel() {
+        return this.#fuel
+    }
+    
+    setFuel(value) {
+        this.#fuel = value
+        if (value > 100) this.#fuel = 100
+    }
+}
+
+const car = new Car();
+console.log(car.getFuel()); // 50
+
+/* For this example, the # actually changes the variable to private and can only be modified and accessed using getter / setter methods. */
